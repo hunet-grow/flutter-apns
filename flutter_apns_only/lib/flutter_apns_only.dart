@@ -25,9 +25,10 @@ class ApnsPushConnectorOnly {
   ApnsMessageHandler? _onLaunch;
   ApnsMessageHandler? _onResume;
 
-  void requestNotificationPermissions(
-      [IosNotificationSettings iosSettings = const IosNotificationSettings()]) {
-    _channel.invokeMethod(
+  Future<void> requestNotificationPermissions(
+      [IosNotificationSettings iosSettings =
+          const IosNotificationSettings()]) async {
+    await _channel.invokeMethod(
         'requestNotificationPermissions', iosSettings.toMap());
   }
 
